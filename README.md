@@ -1,14 +1,29 @@
 # 后端技术选型
 
-| 技术        | 说明            |
-| ----------- | --------------- |
-| SpringBoot  | Web应用开发框架 |
-| MybatisPlus | ORM框架         |
-| MySQL       | 数据库          |
+| 技术        | 说明               |
+| ----------- | ------------------ |
+| SpringBoot  | Web应用开发框架    |
+| MybatisPlus | ORM框架            |
+| MySQL       | 数据库             |
+| Session     | 跨请求存储用户信息 |
 
 # 功能
 
-**用户注册和登录**
+## **用户注册和登录**
 
 - 使用md5对用户密码进行加密存储
-- 在登录时，使用threadlocal进行存储
+- 在登录时，使用threadlocal+session进行用户信息存储和身份区分
+
+### 数据库表
+
+![image-20251107190111529](C:\Users\11296\Desktop\面向对象\期中\virtual-team-project-management-system\doc\images\image-20251107190111529.png)
+
+### 流程图
+
+![image-20251107190326697](C:\Users\11296\Desktop\面向对象\期中\virtual-team-project-management-system\doc\images\image-20251107190326697.png)
+
+## 项目管理
+
+> 注意：因为使用threadlocal保存用户信息
+>
+> 每次启用程序后，请先进行「登录」操作
