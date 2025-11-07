@@ -9,11 +9,16 @@ import com.zhiwu.virtualteamprojectmanagementsystem.model.result.Result;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.result.ResultCodeEnum;
 import com.zhiwu.virtualteamprojectmanagementsystem.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zhiwu.virtualteamprojectmanagementsystem.model.vo.UserVO;
 import com.zhiwu.virtualteamprojectmanagementsystem.service.UserService;
 import com.zhiwu.virtualteamprojectmanagementsystem.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -26,7 +31,6 @@ import org.springframework.util.DigestUtils;
 @Service
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
-
 
     @Override
     public Result<Void> register(LoginDTO loginDTO) {
@@ -76,5 +80,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         UserHolder.saveUser(userDTO);
 
         return Result.ok(userDTO);
+    }
+
+    @Override
+    public List<UserVO> listMember() {
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>().eq(User::getRole, UserRoleEnum.MEMBER.getCode());
+        List<User> userList = baseMapper.selectList(queryWrapper);
+        return userList.stream().map(user -> {
+            UserVO userVO = new UserVO();
+            BeanUtils.copyProperties(user, userVO);
+            return userVO;
+        }).collect(Collectors.toList());
     }
 }
