@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  # mysql
+  datasource:
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://localhost:3306/virtual_team_project_management_system?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    # 用于打印sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 扫描mapper.xml文件
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+# knife4j 分页查询参数扁平化
+springdoc:
+  default-flat-param-object: true
