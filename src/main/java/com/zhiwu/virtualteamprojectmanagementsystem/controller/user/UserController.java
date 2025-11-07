@@ -1,4 +1,4 @@
-package com.zhiwu.virtualteamprojectmanagementsystem.controller;
+package com.zhiwu.virtualteamprojectmanagementsystem.controller.user;
 
 import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.LoginDTO;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.UserDTO;
