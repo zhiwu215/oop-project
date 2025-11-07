@@ -1,7 +1,6 @@
 package com.zhiwu.virtualteamprojectmanagementsystem.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

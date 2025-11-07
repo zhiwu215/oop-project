@@ -1,10 +1,10 @@
 package com.zhiwu.virtualteamprojectmanagementsystem.service.impl;
 
-import ch.qos.logback.core.util.MD5Util;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.LoginDTO;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.UserDTO;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.entity.User;
+import com.zhiwu.virtualteamprojectmanagementsystem.model.enums.UserRoleEnum;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.result.Result;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.result.ResultCodeEnum;
 import com.zhiwu.virtualteamprojectmanagementsystem.mapper.UserMapper;
@@ -29,7 +29,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
-    public Result register(LoginDTO loginDTO) {
+    public Result<Void> register(LoginDTO loginDTO) {
 
         // 用户已存在，报错
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>().eq(User::getUsername, loginDTO.getUsername());
@@ -44,13 +44,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = new User();
         user.setUsername(loginDTO.getUsername());
         user.setPassword(md5Password);
+        // 注册时默认设置为普通成员
+        user.setRole(UserRoleEnum.MEMBER.getCode());
         baseMapper.insert(user);
 
         return Result.ok();
     }
 
     @Override
-    public Result login(LoginDTO loginDTO) {
+    public Result<UserDTO> login(LoginDTO loginDTO) {
         // 用户名不存在，报错
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>().eq(User::getUsername, loginDTO.getUsername());
         User user = baseMapper.selectOne(queryWrapper);
@@ -73,6 +75,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         userDTO.setRole(user.getRole());
         UserHolder.saveUser(userDTO);
 
-        return Result.ok();
+        return Result.ok(userDTO);
     }
 }

@@ -1,6 +1,7 @@
 package com.zhiwu.virtualteamprojectmanagementsystem.service;
 
 import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.LoginDTO;
+import com.zhiwu.virtualteamprojectmanagementsystem.model.dto.UserDTO;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.entity.User;
 import com.zhiwu.virtualteamprojectmanagementsystem.model.result.Result;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -15,8 +16,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
-    Result register(LoginDTO loginDTO);
+    Result<Void> register(LoginDTO loginDTO);
 
-    Result login(LoginDTO loginDTO);
+    Result<UserDTO> login(LoginDTO loginDTO);
 
 }
