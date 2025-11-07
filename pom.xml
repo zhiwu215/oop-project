@@ -72,6 +72,7 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
+            <version>2.3.33</version>
         </dependency>
 
         <!-- knife4j -->
@@ -81,6 +82,12 @@
             <version>4.4.0</version>
         </dependency>
 
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.22</version>
+        </dependency>
 
     </dependencies>
 

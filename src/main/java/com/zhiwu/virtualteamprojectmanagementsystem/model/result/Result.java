@@ -1,4 +1,4 @@
-package com.zhiwu.virtualteamprojectmanagementsystem.result;
+package com.zhiwu.virtualteamprojectmanagementsystem.model.result;
 
 import lombok.Data;
 

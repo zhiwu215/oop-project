@@ -1,4 +1,4 @@
-package com.zhiwu.virtualteamprojectmanagementsystem.result;
+package com.zhiwu.virtualteamprojectmanagementsystem.model.result;
 
 import lombok.Getter;
 
@@ -37,7 +37,13 @@ public enum ResultCodeEnum {
 
 
     TOKEN_EXPIRED(601, "token过期"),
-    TOKEN_INVALID(602, "token非法");
+    TOKEN_INVALID(602, "token非法"),
+
+    PHONE_ERROR(701, "手机号格式错误"),
+    USER_EXIST(801, "用户已存在"),
+    USER_NOT_EXIST(802, "用户不存在"),
+    PASSWORD_ERROR(803, "密码错误");
+
 
 
     private final Integer code;
