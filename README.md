@@ -16,11 +16,11 @@
 
 ### 数据库表
 
-![image-20251107190111529](C:\Users\11296\Desktop\面向对象\期中\virtual-team-project-management-system\doc\images\image-20251107190111529.png)
+![image-20251107190111529](doc\images\image-20251107190111529.png)
 
 ### 流程图
 
-![image-20251107190326697](C:\Users\11296\Desktop\面向对象\期中\virtual-team-project-management-system\doc\images\image-20251107190326697.png)
+![image-20251107190326697](doc\images\image-20251107190326697.png)
 
 ## 项目管理
 
